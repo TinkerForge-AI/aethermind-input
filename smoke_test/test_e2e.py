@@ -6,6 +6,11 @@ import sys
 from pathlib import Path
 
 
+# Command to run from root folder: 
+#
+# source .venv/bin/activate
+# pytest -s smoke_test/test_e2e.py 
+
 def test_e2e():
     print("Starting e2e smoke test...")
     root = Path(__file__).resolve().parents[2]

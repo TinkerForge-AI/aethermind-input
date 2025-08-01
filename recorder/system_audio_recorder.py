@@ -1,5 +1,6 @@
 import subprocess
 import threading
+import signal
 from pathlib import Path
 
 _process = None
@@ -43,6 +44,6 @@ def start_system_audio_recording(output_path):
 def stop_system_audio_recording():
     global _process
     if _process:
-        _process.terminate()
+        _process.send_signal(signal.SIGINT)
         _process.wait()
         _process = None

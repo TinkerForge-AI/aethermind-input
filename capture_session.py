@@ -37,7 +37,7 @@ def run_session():
 
     # Start components
     print("[Session] Recording screen...")
-    start_screen_recording(video_path, region=None)  # Use full screen or customize region
+    start_screen_recording(video_path)  # region param is not needed unless implemented
 
     print("[Session] Recording system audio...")
     start_system_audio_recording(audio_path)

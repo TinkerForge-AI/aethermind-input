@@ -69,8 +69,10 @@ def log_actions(log_path="actions.jsonl", interval=0.1):
 
             time.sleep(interval)
 
+logger_thread = None
+
 def start_action_logging(log_path="actions.jsonl", interval=0.1):
-    global running
+    global running, logger_thread, keyboard_listener, mouse_listener
     running = True
 
     # Listeners
@@ -86,5 +88,14 @@ def start_action_logging(log_path="actions.jsonl", interval=0.1):
     return keyboard_listener, mouse_listener, logger_thread
 
 def stop_action_logging():
-    global running
-    running
+    global running, logger_thread, keyboard_listener, mouse_listener
+    if keyboard_listener:
+        keyboard_listener.stop()
+        keyboard_listener = None
+    if mouse_listener:
+        mouse_listener.stop()
+        mouse_listener = None
+    running = False
+    if logger_thread is not None:
+        logger_thread.join()
+        logger_thread = None

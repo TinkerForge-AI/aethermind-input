@@ -1,6 +1,7 @@
 # Ignore all __pycache__ directories
 __pycache__/
 **/__pycache__/
+.venv/
 
 # Ignore all compiled Python files
 *.py[cod]
@@ -8,8 +9,10 @@ __pycache__/
 *.pyd
 *.pyc
 
+
 # Ignore data session output
 data/
+sessions/
 
 # (Optional) Ignore VS Code settings
 .vscode/

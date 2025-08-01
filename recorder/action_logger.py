@@ -72,6 +72,10 @@ def log_actions(log_path="actions.jsonl", interval=0.1):
 logger_thread = None
 
 def start_action_logging(log_path="actions.jsonl", interval=0.1):
+    """
+    Start logging keyboard and mouse actions to a file in a background thread.
+    Returns the keyboard listener, mouse listener, and logger thread.
+    """
     global running, logger_thread, keyboard_listener, mouse_listener
     running = True
 
@@ -88,6 +92,9 @@ def start_action_logging(log_path="actions.jsonl", interval=0.1):
     return keyboard_listener, mouse_listener, logger_thread
 
 def stop_action_logging():
+    """
+    Stop the action logger thread and listeners, and wait for cleanup.
+    """
     global running, logger_thread, keyboard_listener, mouse_listener
     if keyboard_listener:
         keyboard_listener.stop()
